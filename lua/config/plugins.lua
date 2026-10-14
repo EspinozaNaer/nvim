@@ -76,6 +76,27 @@ require("lazy").setup({
   },
 
   {
+    "nvim-tree/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeFindFile" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {
+      hijack_netrw = false,
+      hijack_directories = { enable = false },
+      update_focused_file = { enable = true },
+      view = { width = 34 },
+      git = { enable = true, ignore = true },
+      filters = { dotfiles = false },
+      renderer = {
+        group_empty = true,
+        highlight_git = "name",
+        hidden_display = "simple",
+      },
+    },
+  },
+
+  {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
     opts = {},

@@ -26,3 +26,7 @@ map("n", "<leader>g", "<cmd>Neogit<cr>", opts("Open Neogit"))
 
 -- Code/navigation views
 map("n", "<leader>ta", "<cmd>AerialToggle<cr>", opts("Toggle symbols outline"))
+
+map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts("Toggle file tree"))
+map("n", "<leader>tv", "<cmd>Vigilar<cr>", opts("Watch tests of this file's repo"))
+map("n", "<leader>tE", function() require("config.estacion").diff_de_la_epica() end, opts("Diff of the epic so far"))
