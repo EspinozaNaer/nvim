@@ -31,12 +31,22 @@ local lsp_servers = {
 require("lazy").setup({
   -- Keep one theme instead of carrying the source config's theme collection.
   {
-    "sainnhe/edge",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      vim.g.edge_enable_italic = 1
-      vim.cmd.colorscheme("edge")
+    opts = {
+      style = "night",
+      styles = { comments = { italic = false } },
+      on_highlights = function(hl, c)
+        hl["@comment.documentation"] = { fg = c.blue1 }
+        hl["@type.definition"] = { fg = c.magenta }
+        hl["@constant"] = { fg = c.blue1 }
+        hl.LineNr = { fg = c.comment }
+      end,
+    },
+    config = function(_, opts)
+      require("tokyonight").setup(opts)
+      vim.cmd.colorscheme("tokyonight-night")
     end,
   },
 
