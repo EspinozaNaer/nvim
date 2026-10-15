@@ -27,6 +27,19 @@ local function recargar_cambios_ajenos()
   end))
 end
 
+local function acomodar()
+  if not (vigilante.win and vim.api.nvim_win_is_valid(vigilante.win)) then
+    return
+  end
+  vim.cmd("wincmd =")
+  vim.api.nvim_win_set_width(vigilante.win, math.floor(vim.o.columns * 0.32))
+end
+
+vim.api.nvim_create_autocmd("VimResized", {
+  group = vim.api.nvim_create_augroup("estacion", { clear = true }),
+  callback = acomodar,
+})
+
 function M.vigilar(repo)
   if not (vigilante.win and vim.api.nvim_win_is_valid(vigilante.win)) then
     return vim.notify("La estación no está abierta: :Estacion", vim.log.levels.WARN)
